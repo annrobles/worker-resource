@@ -10,3 +10,5 @@
 1. Run cmd "cd resources/frontend/views".
 2. Run cmd "npm install".
 3. Run cmd "npm start".
+
+TESTING
