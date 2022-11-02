@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('user', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('name', 100);
-            $table->string('contact_number', 15);
             $table->string('email', 50)->unique();
             $table->string('password', 100);
             $table->bigInteger('user_type_id')->unsigned();
+            $table->tinyInteger('verified')->default(0);
             $table->timestamps();
         });
 

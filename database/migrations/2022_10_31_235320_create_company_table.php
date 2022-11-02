@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('company', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->bigInteger('user_id')->unsigned();
-            $table->string('about', 500);
-            $table->string('link', 200);
+            $table->string('about', 500)->nullable();
+            $table->string('link', 200)->nullable();
             $table->string('email', 50)->unique();
-            $table->string('contact_number', 15);
-            $table->bigInteger('company_skillset_id')->unsigned();
+            $table->string('contact_number', 15)->nullable();
+            $table->bigInteger('company_skillset_id')->nullable()->unsigned();
             $table->timestamps();
         });
 

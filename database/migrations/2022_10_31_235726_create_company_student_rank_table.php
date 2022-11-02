@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id()->autoIncrement();
             $table->bigInteger('company_id')->unsigned();
             $table->bigInteger('student_id')->unsigned();
-            $table->integer('rank');
+            $table->integer('rank')->nullable();
             $table->timestamps();
         });
 

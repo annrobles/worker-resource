@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('student', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->bigInteger('user_id')->unsigned();
-            $table->string('name', 100);
-            $table->string('contact_number', 15);
+            $table->string('name', 100)->nullable();
+            $table->string('contact_number', 15)->nullable();
             $table->string('email', 50)->unique();
-            $table->string('link', 200);
-            $table->string('title', 200);
-            $table->string('about', 500);
+            $table->string('link', 200)->nullable();
+            $table->string('title', 200)->nullable();
+            $table->string('about', 500)->nullable();
             $table->bigInteger('student_skillset_id')->unsigned();
             $table->timestamps();
         });
