@@ -1,0 +1,25 @@
+<div class="dashboard-header">
+  <div class="dashboard-header__leftnav">
+    <span class="dashboard-header__brand">Worker Resource</span>
+    <div class="dashboard-header__navs">
+      <div class="dashboard-header__nav-item dashboard-header__nav-item_active"><span>Home</span></div>
+    </div>
+  </div>
+  <div class="dashboard-header__rightnav">
+    <div class="dashboard-header__rightnav-avatar">
+      <span>WR</span>
+    </div>
+  </div>
+</div>
+
+<div class="dasboard-container">
+  <ng-container *ngIf="userType == userAccessType.Student">
+    <student-detail></student-detail>
+  </ng-container>
+  <ng-container *ngIf="userType == userAccessType.Admin">
+    <div>Admin</div>
+  </ng-container>
+  <ng-container *ngIf="userType == userAccessType.Company">
+    <div>Company</div>
+  </ng-container>
+</div>

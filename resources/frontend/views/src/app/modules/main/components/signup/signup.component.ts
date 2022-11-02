@@ -1,7 +1,7 @@
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SignupService } from '../../../../services/signup.service'
-
+import { Router } from '@angular/router';
 @UntilDestroy()
 @Component({
   selector: 'signup',
@@ -19,7 +19,8 @@ export class SignupComponent implements OnInit, OnDestroy {
   private pwRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d$@$!%*?&.])[A-Za-z\d$@$!%*?&.]{7,}/;
 
   constructor(
-    private signupService: SignupService
+    private signupService: SignupService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +36,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   signupClick() {
-    this.signupService.signup({email: this.email, password: this.password}).subscribe();
+    //this.signupService.signup({email: this.email, password: this.password}).subscribe();
+    this.router.navigateByUrl('/dashboard');
   }
 }
