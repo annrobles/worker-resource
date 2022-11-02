@@ -11,4 +11,3 @@
 2. Run cmd "npm install".
 3. Run cmd "npm start".
 
-TESTING
