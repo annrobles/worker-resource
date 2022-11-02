@@ -10,13 +10,13 @@ export abstract class MainService {
 
   getAPIBase(route: string = ''): string {
     //let serverLink = this.authSvc.url.serverlinks.find(x => ServerType[x.serverType].toLowerCase() == this._urlName.toLowerCase());
-    let serverLink: ServerLink = {url: ""};
+    let serverLink: ServerLink = {url: "http://127.0.0.1:8000/"};
 
-    // if (serverLink != null) {
-    //   return serverLink.url + route;
-    // } else {
-    //   return this.fallbackURL + route;
-    // }
+    if (serverLink != null) {
+      return serverLink.url + route;
+    } else {
+      return this.fallbackURL + route;
+    }
     return route;
   }
 
