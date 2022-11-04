@@ -19,12 +19,12 @@ class DatabaseSeeder extends Seeder
         DB::table('user_type')->insert(['name' => 'Company']);
         DB::table('user_type')->insert(['name' => 'Student']);
 
-        DB::table('user')->insert([
+        DB::table('users')->insert([
             'email' => 'admin@worker.ca',
             'password' => bcrypt('password'),
             'user_type_id' => 1
         ]);
-        
+
         DB::table('skillset')->insert(['name' => 'Database']);
         DB::table('skillset')->insert(['name' => 'Computer Science']);
         DB::table('skillset')->insert(['name' => 'JavaScript']);

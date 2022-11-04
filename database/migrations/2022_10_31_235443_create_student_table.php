@@ -28,7 +28,7 @@ return new class extends Migration
         });
 
         Schema::table('student', function($table) {
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('student_skillset_id')->references('id')->on('skillset');
         });
     }
