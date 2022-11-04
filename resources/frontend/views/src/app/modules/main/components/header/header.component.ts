@@ -6,11 +6,11 @@ import { UserAccessType } from "../../../../models/user-access-type.enum";
 
 @UntilDestroy()
 @Component({
-  selector: 'dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.less']
+  selector: 'header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.less']
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   userAccessType = UserAccessType;
   userType: number =  UserAccessType.None;
