@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('email', 50)->unique();
             $table->string('password', 100);
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::table('user', function($table) {
+        Schema::table('users', function($table) {
             $table->foreign('user_type_id')->references('id')->on('user_type');
         });
     }
