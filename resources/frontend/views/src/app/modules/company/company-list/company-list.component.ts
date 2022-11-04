@@ -1,9 +1,11 @@
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Company } from '../../../models/company.model';
 import { CompanyStatus } from '../../../models/company-status.enum';
+
+import { UserAccessType } from "../../../models/user-access-type.enum";
 
 @UntilDestroy()
 @Component({
@@ -12,6 +14,11 @@ import { CompanyStatus } from '../../../models/company-status.enum';
   styleUrls: ['./company-list.component.less']
 })
 export class CompanyListComponent implements OnInit, OnDestroy {
+
+  @Input() companyHeader: string = "List of Companies you referred";
+
+  userAccessType = UserAccessType;
+  userType: number =  UserAccessType.None;
 
   companies:Company[] = [
     {
@@ -59,7 +66,15 @@ export class CompanyListComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router
-  ) { }
+  ) {
+
+    this.userType = UserAccessType.Admin;
+
+    if (this.userType == UserAccessType.Admin) {
+      this.companyHeader = "List of Companies";
+    }
+
+  }
 
   ngOnInit(): void {
   }

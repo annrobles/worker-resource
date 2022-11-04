@@ -17,7 +17,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   mainNavItems = [
     {name: "Home", link: "/dashboard/user-profile/basic-info", active: true},
-    {name: "Company", link: "/company", active: false}
+    {name: "Company", link: "/company", active: false},
+    {name: "Candidates", link: "/student-list", active: false}
   ];
 
   constructor(
@@ -25,7 +26,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.userType = UserAccessType.Student;
+    this.userType = UserAccessType.Admin;
   }
 
   ngOnDestroy(){

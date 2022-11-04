@@ -8,6 +8,8 @@ import { DashboardComponent } from "./modules/main/components/dashboard/dashboar
 import { SigninComponent } from "./modules/main/components/signin/signin.component";
 import { SignupComponent } from './modules/main/components/signup/signup.component';
 import { StudentDetailComponent } from "./modules/student/components/student-detail/student-detail.component";
+import { StudentListComponent } from "./modules/student/components/student-list/student-list.component";
+import { StudentViewComponent } from "./modules/student/components/student-view/student-view.component";
 import { UserProfileComponent } from "./modules/user-profile/user-profile.component";
 import { UserVerificationComponent } from "./modules/main/components/user-verification/user-verification.component";
 
@@ -85,6 +87,16 @@ const routes: Routes = [
     path: 'student-detail',
     data: { frameless: true },
     component: StudentDetailComponent
+  },
+  {
+    path: 'student-list',
+    data: { frameless: true },
+    component: StudentListComponent
+  },
+  {
+    path: 'student-view',
+    data: { frameless: true },
+    component: StudentViewComponent
   },
   {
     path: 'user-verification',

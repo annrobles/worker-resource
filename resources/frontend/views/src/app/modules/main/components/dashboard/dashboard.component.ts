@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.userType = UserAccessType.Student;
+    this.userType = UserAccessType.Admin;
   }
 
   ngOnDestroy(){

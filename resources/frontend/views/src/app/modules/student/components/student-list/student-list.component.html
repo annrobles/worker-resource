@@ -1,0 +1,24 @@
+<div class="company-container">
+  <h3 class="company-container__header mb-5">List of Applicants</h3>
+
+  <table class="table table-striped table-bordered table-sm">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">#</th>
+        <th scope="col" class="text-center">Name</th>
+        <th scope="col" class="text-center">Email</th>
+        <th scope="col" class="text-center">Contact Number</th>
+        <th scope="col" class="text-center" *ngIf="showRank">Rank</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students; let i = index" (click)="viewStudent(student)">
+        <th class="text-center" scope="row">{{ i+1 }}</th>
+        <td class="text-center">{{ student.first_name }} {{ student.last_name }}</td>
+        <td class="text-center">{{ student.email }}</td>
+        <td class="text-center">{{ student.contact_number }}</td>
+        <td class="text-center" *ngIf="showRank">{{ student.rank }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
