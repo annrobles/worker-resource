@@ -36,7 +36,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   signupClick() {
-    //this.signupService.signup({email: this.email, password: this.password}).subscribe();
+    this.signupService.signup({email: this.email, password: this.password}).subscribe();
     // this.router.navigateByUrl('/dashboard/user-profile/basic-info');
     this.router.navigateByUrl('/dashboard/user-profile/basic-info');
   }

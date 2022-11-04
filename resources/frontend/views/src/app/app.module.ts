@@ -14,6 +14,8 @@ import { HeaderComponent } from "./modules/main/components/header/header.compone
 import { SigninComponent } from "./modules/main/components/signin/signin.component";
 import { SignupComponent } from './modules/main/components/signup/signup.component';
 import { StudentDetailComponent } from "./modules/student/components/student-detail/student-detail.component";
+import { StudentListComponent } from "./modules/student/components/student-list/student-list.component";
+import { StudentViewComponent } from "./modules/student/components/student-view/student-view.component";
 import { UserProfileComponent } from "./modules/user-profile/user-profile.component";
 import { UserVerificationComponent } from "./modules/main/components/user-verification/user-verification.component";
 
@@ -29,7 +31,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule
   ],
   exports: [
-    StudentDetailComponent
+    StudentDetailComponent,
+    CompanyListComponent
   ],
   declarations: [
     AppComponent,
@@ -42,6 +45,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SigninComponent,
     SignupComponent,
     StudentDetailComponent,
+    StudentListComponent,
+    StudentViewComponent,
     UserProfileComponent,
     UserVerificationComponent
   ],
