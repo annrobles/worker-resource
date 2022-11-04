@@ -5,22 +5,45 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CompanyAddComponent } from "./modules/company/company-add/company-add.component";
+import { CompanyDetailComponent } from "./modules/company/company-detail/company-detail.component";
+import { CompanyEditComponent } from "./modules/company/company-edit/company-edit.component";
+import { CompanyListComponent } from "./modules/company/company-list/company-list.component";
+import { DashboardComponent } from "./modules/main/components/dashboard/dashboard.component";
+import { HeaderComponent } from "./modules/main/components/header/header.component";
 import { SigninComponent } from "./modules/main/components/signin/signin.component";
 import { SignupComponent } from './modules/main/components/signup/signup.component';
+import { StudentDetailComponent } from "./modules/student/components/student-detail/student-detail.component";
+import { UserProfileComponent } from "./modules/user-profile/user-profile.component";
+import { UserVerificationComponent } from "./modules/main/components/user-verification/user-verification.component";
 
 import { SignupService } from './services/signup.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SigninComponent,
-    SignupComponent
-  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
+  ],
+  exports: [
+    StudentDetailComponent
+  ],
+  declarations: [
+    AppComponent,
+    CompanyAddComponent,
+    CompanyEditComponent,
+    CompanyDetailComponent,
+    CompanyListComponent,
+    DashboardComponent,
+    HeaderComponent,
+    SigninComponent,
+    SignupComponent,
+    StudentDetailComponent,
+    UserProfileComponent,
+    UserVerificationComponent
   ],
   providers: [
     SignupService

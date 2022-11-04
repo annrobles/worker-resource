@@ -1,0 +1,105 @@
+.student-detail-container__basic-info {
+  .row {
+    margin-bottom: 1rem;
+    color: #003248;
+  }
+
+  .form-check {
+    margin-left: 1rem;
+    text-align: left;
+  }
+}
+
+.student-detail-container__location,
+.student-detail-container__experience,
+.student-detail-container__education
+ {
+  .row {
+    margin-bottom: 1rem;
+    color: #003248;
+  }
+}
+
+.student-detail-container__languages {
+  .row {
+    color: #003248;
+  }
+
+  .form-check {
+    margin-left: 1rem;
+  }
+}
+
+.form-check-input:checked {
+  background-color: #66B2D2;
+  border-color: #66B2D2;
+}
+
+.student-detail-container__submit {
+  margin-top: 3rem;
+}
+
+.student-detail-container_delete,
+.student-detail-container_add,
+.student-detail-container__submit-primary {
+  border-color: #4DA5CB;
+  background-color: #4DA5CB;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    background-color: #007EB4;
+    border-color: #007EB4;
+  }
+}
+
+.student-detail-container_add {
+  position: absolute;
+  top: 40px;
+
+  i {
+    font-size: 1.8rem;
+  }
+}
+
+.form-floating > .form-control:focus, .form-floating > .form-control:not(:placeholder-shown),
+.form-floating > .form-control-plaintext:focus,
+.form-floating > .form-control-plaintext:not(:placeholder-shown) {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+
+.student-detail-skills_dropdown {
+  border: 1px solid #f0f0f0;
+  background: #FCFCFC;
+  position: absolute;
+
+  margin-top: 2px;
+  width: 100%;
+  z-index: 2;
+
+  a {
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    display: block;
+    padding: 8px;
+
+    &:hover {
+      background-color: #E6F2F8;
+    }
+  }
+}
+
+.company-statuses {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  width: 100%;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-radius: 0.375rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}

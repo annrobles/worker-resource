@@ -1,0 +1,32 @@
+<div class="company-container">
+  <h3 class="company-container__header mb-5">List of Companies you referred</h3>
+  <div class="row company-add-button mb-3">
+    <div class="form-floating">
+      <button class="w-30 btn btn-sm btn-primary student-detail-container_add" type="submit" (click)="addCompany()">
+        <span>Add Company</span>
+      </button>
+    </div>
+  </div>
+  <table class="table table-striped table-bordered table-sm">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">#</th>
+        <th scope="col" class="text-center">Name</th>
+        <th scope="col" class="text-center">Email</th>
+        <th scope="col" class="text-center">Contact Number</th>
+        <th scope="col" class="text-center">Date Added</th>
+        <th scope="col" class="text-center">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let company of companies; let i = index" (click)="viewCompany(company)">
+        <th class="text-center" scope="row">{{ i+1 }}</th>
+        <td class="text-center">{{ company.name }}</td>
+        <td class="text-center">{{ company.email }}</td>
+        <td class="text-center">{{ company.contact_number }}</td>
+        <td class="text-center">{{ company.created_at | date:'longDate' }}</td>
+        <td class="text-center">{{ CompanyStatus[company.status] }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

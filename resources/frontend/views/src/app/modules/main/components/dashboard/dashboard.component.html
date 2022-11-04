@@ -1,0 +1,11 @@
+<div class="dasboard-container">
+  <ng-container *ngIf="userType == userAccessType.Student">
+    <student-detail></student-detail>
+  </ng-container>
+  <ng-container *ngIf="userType == userAccessType.Admin">
+    <div>Admin</div>
+  </ng-container>
+  <ng-container *ngIf="userType == userAccessType.Company">
+    <div>Company</div>
+  </ng-container>
+</div>

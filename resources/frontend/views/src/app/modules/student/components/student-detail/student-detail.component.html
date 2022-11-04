@@ -1,0 +1,22 @@
+<div class="student-detail-container row">
+  <div class="student-detail-navs col-sm-3">
+    <div class="student-detail__avatar-container">
+      <div class="student-detail__avatar">
+        <span>WR</span>
+      </div>
+    </div>
+    <div class="student-detail__name">Florece Ann Robles</div>
+    <div class="student-detail__email">quiles.floreceann@gmail.com</div>
+    <div>
+      <ng-container *ngFor="let item of userProfileNavItems">
+        <a [class.active]="item.active" class="student-detail__nav-item" (click)="navItemClick(item)">
+          <span>{{ item.name }}</span>
+        </a>
+      </ng-container>
+    </div>
+  </div>
+  <div class="student-detail-content col-sm-9">
+    <h2>{{ studentDetailHeader }}</h2>
+    <router-outlet></router-outlet>
+  </div>
+</div>

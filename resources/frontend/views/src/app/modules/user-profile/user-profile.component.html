@@ -1,0 +1,474 @@
+<ng-container [ngSwitch]="currentRouteUrl">
+  <ng-container *ngSwitchCase="'/dashboard/user-profile/location'" [ngTemplateOutlet]="location"></ng-container>
+  <ng-container *ngSwitchCase="'/dashboard/user-profile/skills'" [ngTemplateOutlet]="skills"></ng-container>
+  <ng-container *ngSwitchCase="'/dashboard/user-profile/experience'" [ngTemplateOutlet]="experience"></ng-container>
+  <ng-container *ngSwitchCase="'/dashboard/user-profile/education'" [ngTemplateOutlet]="education"></ng-container>
+  <ng-container *ngSwitchCase="'/dashboard/user-profile/languages'" [ngTemplateOutlet]="languages"></ng-container>
+  <ng-container *ngSwitchCase="'/dashboard/user-profile/documents'" [ngTemplateOutlet]="documents"></ng-container>
+  <ng-container *ngSwitchCase="'/dashboard/user-profile/agreements'" [ngTemplateOutlet]="agreements"></ng-container>
+  <ng-container *ngSwitchDefault [ngTemplateOutlet]="basicInfo"></ng-container>
+</ng-container>
+
+<ng-template #basicInfo>
+  <div class="student-detail-container student-detail-container__basic-info">
+    <div class="row">
+      <div class="col-lg-6 col-md-6">
+        <div class="row">
+          <label style="text-align: left;">First Name</label>
+          <div class="form-floating">
+            <input type="text"
+              class="form-control"
+              id="floatingInput"
+              [(ngModel)]="userBasicInformation.first_name"
+              name="first_name"
+              autocomplete="off">
+          </div>
+        </div>
+        <div class="row">
+          <label style="text-align: left;">Email</label>
+          <div class="form-floating">
+            <input type="email"
+              class="form-control"
+              id="floatingInput"
+              [(ngModel)]="userBasicInformation.email"
+              name="email"
+              autocomplete="off">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <div class="row">
+          <label style="text-align: left;">Last Name</label>
+          <div class="form-floating">
+            <input type="text"
+              class="form-control"
+              id="floatingInput"
+              [(ngModel)]="userBasicInformation.last_name"
+              name="last_name"
+              autocomplete="off">
+          </div>
+        </div><div class="row">
+          <label style="text-align: left;">Phone</label>
+          <div class="form-floating">
+            <input type="text"
+              class="form-control"
+              id="floatingInput"
+              [(ngModel)]="userBasicInformation.contact_number"
+              name="contact_number"
+              autocomplete="off">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <label style="text-align: left;">Job Title</label>
+      <div class="form-floating">
+        <input type="text"
+          class="form-control"
+          id="floatingInput"
+          [(ngModel)]="userBasicInformation.title"
+          name="title"
+          autocomplete="off">
+      </div>
+    </div>
+
+    <div class="row">
+      <label style="text-align: left;">What is the best time to reach you?</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" [(ngModel)]="userBasicInformation.availability.morning" [ngModelOptions]="{standalone: true}" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Morning
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" [(ngModel)]="userBasicInformation.availability.afternoon" id="flexCheckChecked" checked>
+        <label class="form-check-label" for="flexCheckChecked">
+          Afternoon
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" [(ngModel)]="userBasicInformation.availability.evening" id="flexCheckChecked" checked>
+        <label class="form-check-label" for="flexCheckChecked">
+          Evening
+        </label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">About</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" [(ngModel)]='userBasicInformation.about'></textarea>
+      </div>
+    </div>
+
+    <div class="row student-detail-container__submit">
+      <div class="col-lg-4 col-md-4"></div>
+      <div class="col-lg-4 col-md-4"><button class="w-100 btn btn-lg btn-primary student-detail-container__submit-primary" type="submit" (click)="userProfileSubmit(userBasicInformation, UserProfileInfoType.BasicInformation)">SUBMIT</button></div>
+      <div class="col-lg-4 col-md-4"></div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #location>
+  <div class="student-detail-container student-detail-container__location col-lg-6 col-md-6">
+    <div class="row">
+      <label style="text-align: left;">Address 1:</label>
+      <div class="form-floating">
+        <input type="text"
+          class="form-control"
+          id="floatingInput"
+          [(ngModel)]="userLocation.address1"
+          name="address1"
+          autocomplete="off">
+      </div>
+    </div>
+
+    <div class="row">
+      <label style="text-align: left;">Address 2:</label>
+      <div class="form-floating">
+        <input type="text"
+          class="form-control"
+          id="floatingInput"
+          [(ngModel)]="userLocation.address2"
+          name="address2"
+          autocomplete="off">
+      </div>
+    </div>
+
+    <div class="row">
+      <label style="text-align: left;">City</label>
+      <div class="form-floating">
+        <input type="email"
+          class="form-control"
+          id="floatingInput"
+          [(ngModel)]="userLocation.city"
+          name="city"
+          autocomplete="off">
+      </div>
+    </div>
+
+    <div class="row">
+      <label style="text-align: left;">State</label>
+      <div class="form-floating">
+        <input type="email"
+          class="form-control"
+          id="floatingInput"
+          [(ngModel)]="userLocation.state"
+          name="state"
+          autocomplete="off">
+      </div>
+    </div>
+
+    <div class="row">
+      <label style="text-align: left;">Postal Code</label>
+      <div class="form-floating">
+        <input type="text"
+          class="form-control"
+          id="floatingInput"
+          [(ngModel)]="userLocation.postal_code"
+          name="lastName"
+          autocomplete="off">
+      </div>
+    </div>
+    <div class="row">
+      <label style="text-align: left;">Country</label>
+      <div class="form-floating">
+        <input type="text"
+          class="form-control"
+          id="floatingInput"
+          [(ngModel)]="userLocation.country"
+          name="string"
+          autocomplete="off">
+      </div>
+    </div>
+
+    <div class="row student-detail-container__submit">
+      <div class="col-lg-4 col-md-4"></div>
+      <div class="col-lg-4 col-md-4"><button class="w-30 btn btn-sm btn-primary student-detail-container__submit-primary" type="submit" (click)="userProfileSubmit(userLocation, UserProfileInfoType.Location)">SUBMIT</button></div>
+      <div class="col-lg-4 col-md-4"></div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #skills>
+  <div class="student-detail-container student-detail-container__education">
+    <div class="row">
+      <div class="col-lg-7 col-md-7">
+        <label style="text-align: left;">Skill Name</label>
+        <div class="form-floating">
+          <input type="text"
+            class="form-control"
+            id="floatingInput"
+            [(ngModel)]="newSkill.name"
+            (ngModelChange)="filterSkill(newSkill.name)"
+            name="name"
+            autocomplete="off">
+            <ng-container *ngIf="showSkillDropDown">
+              <div class="student-detail-skills_dropdown">
+                <a *ngFor="let skill of filteredSystemSkills" (click)="selectSkill(skill)">{{ skill.name }}</a>
+              </div>
+            </ng-container>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3">
+        <label style="text-align: left;"># of years experience</label>
+        <div class="form-floating">
+          <input type="text"
+            class="form-control"
+            id="floatingInput"
+            [(ngModel)]="newSkill.total_years_experience"
+            name="name"
+            autocomplete="off">
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-2">
+        <div class="form-floating">
+          <button class="w-30 btn btn-sm btn-primary student-detail-container_add" type="submit" (click)="addSkill()">
+            <span>Add</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <table class="table table-striped table-bordered table-sm">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">#</th>
+            <th scope="col" class="text-center">Skill Name</th>
+            <th scope="col" class="text-center"># of years experience</th>
+            <th scope="col" class="text-center"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let profileSkill of profileSkills; let i = index">
+            <th class="text-center" scope="row">{{ i+1 }}</th>
+            <td class="text-center">{{ profileSkill.name }}</td>
+            <td class="text-center">{{ profileSkill.total_years_experience }}</td>
+            <td class="text-center">
+              <div class="form-floating">
+                <button class="w-30 btn btn-sm btn-primary student-detail-container_delete" type="submit" (click)="deleteSkill(profileSkill)">
+                  <span>Delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #experience>
+  <div class="student-detail-container student-detail-container__experience">
+    <div class="row col-lg-6 col-md-6">
+      <label style="text-align: left;">Title</label>
+      <div class="form-floating">
+        <input type="text"
+          class="form-control"
+          id="floatingInput"
+          [(ngModel)]="userExperience.title"
+          name="title"
+          autocomplete="off">
+      </div>
+    </div>
+
+    <div class="row col-lg-6 col-md-6">
+      <label style="text-align: left;">Company Name</label>
+      <div class="form-floating">
+        <input type="text"
+          class="form-control"
+          id="floatingInput"
+          [(ngModel)]="userExperience.company_name"
+          name="company_name"
+          autocomplete="off">
+      </div>
+    </div>
+
+    <div class="row col-lg-6 col-md-6">
+      <div class="col-lg-6 col-md-6">
+          <label style="text-align: left;">Start Date</label>
+          <div class="form-floating">
+            <input type="text"
+              class="form-control"
+              id="floatingInput"
+              [(ngModel)]="userExperience.start_date"
+              name="start_date"
+              autocomplete="off">
+          </div>
+      </div>
+      <div class="col-lg-6 col-md-6">
+          <label style="text-align: left;">End Date</label>
+          <div class="form-floating">
+            <input type="text"
+              class="form-control"
+              id="floatingInput"
+              [(ngModel)]="userExperience.end_date"
+              name="end_date"
+              autocomplete="off">
+          </div>
+      </div>
+    </div>
+
+    <div class="row col-lg-6 col-md-6">
+      <label style="text-align: left;">Location</label>
+      <div class="form-floating">
+        <input type="email"
+          class="form-control"
+          id="floatingInput"
+          [(ngModel)]="userExperience.location"
+          name="location"
+          autocomplete="off">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Responsibilities</label>
+        <textarea class="form-control" [(ngModel)]="userExperience.description" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="row student-detail-container__submit">
+      <div class="col-lg-4 col-md-4"></div>
+      <div class="col-lg-4 col-md-4"><button class="w-100 btn btn-lg btn-primary student-detail-container__submit-primary" type="submit" (click)="userProfileSubmit(userExperience, UserProfileInfoType.Experience)">SUBMIT</button></div>
+      <div class="col-lg-4 col-md-4"></div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #education>
+  <div class="student-detail-container student-detail-container__education">
+    <div class="row col-lg-6 col-md-6">
+      <label style="text-align: left;">School </label>
+      <div class="form-floating">
+        <input type="text"
+          class="form-control"
+          id="floatingInput"
+          [(ngModel)]="userEducation.name"
+          name="name"
+          autocomplete="off">
+      </div>
+    </div>
+
+    <div class="row col-lg-6 col-md-6">
+      <label style="text-align: left;">Degree</label>
+      <div class="form-floating">
+        <input type="text"
+          class="form-control"
+          id="floatingInput"
+          [(ngModel)]="userEducation.degree"
+          name="degree"
+          autocomplete="off">
+      </div>
+    </div>
+
+    <div class="row col-lg-6 col-md-6">
+      <label style="text-align: left;">Field of study</label>
+      <div class="form-floating">
+        <input type="text"
+          class="form-control"
+          id="floatingInput"
+          [(ngModel)]="userEducation.field_study"
+          name="field_study"
+          autocomplete="off">
+      </div>
+    </div>
+
+    <div class="row col-lg-6 col-md-6">
+      <div class="col-lg-6 col-md-6">
+          <label style="text-align: left;">Start Date</label>
+          <div class="form-floating">
+            <input type="text"
+              class="form-control"
+              id="floatingInput"
+              [(ngModel)]="userEducation.start_date"
+              name="start_date"
+              autocomplete="off">
+          </div>
+      </div>
+      <div class="col-lg-6 col-md-6">
+          <label style="text-align: left;">End Date</label>
+          <div class="form-floating">
+            <input type="text"
+              class="form-control"
+              id="floatingInput"
+              [(ngModel)]="userEducation.end_date"
+              name="end_date"
+              autocomplete="off">
+          </div>
+      </div>
+    </div>
+
+    <div class="row col-lg-6 col-md-6">
+      <label style="text-align: left;">Grade</label>
+      <div class="form-floating">
+        <input type="email"
+          class="form-control"
+          id="floatingInput"
+          [(ngModel)]="userEducation.grade"
+          name="grade"
+          autocomplete="off">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Activities and societies</label>
+        <textarea class="form-control" [(ngModel)]="userEducation.description" id="exampleFormControlTextarea1" rows="5"></textarea>
+      </div>
+    </div>
+
+    <div class="row student-detail-container__submit">
+      <div class="col-lg-4 col-md-4"></div>
+      <div class="col-lg-4 col-md-4"><button class="w-100 btn btn-lg btn-primary student-detail-container__submit-primary" type="submit" (click)="userProfileSubmit(userEducation, UserProfileInfoType.Experience)">SUBMIT</button></div>
+      <div class="col-lg-4 col-md-4"></div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #languages>
+  <div class="row student-detail-container__languages">
+    <label style="text-align: left;">Spoken & written languages.</label>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" [(ngModel)]="userLanguage.language.english" id="flexCheckDefault">
+      <label class="form-check-label" for="flexCheckDefault">
+        English
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" [(ngModel)]="userLanguage.language.french" id="flexCheckChecked" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        French
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" [(ngModel)]="userLanguage.language.other_specify" id="flexCheckChecked" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Other Specify:
+      </label>
+      <input type="text"
+        class="form-control"
+        id="floatingInput"
+        [(ngModel)]="userLanguage.other_specify"
+        name="other_specify"
+        autocomplete="off">
+    </div>
+    <div class="row student-detail-container__submit">
+      <div class="col-lg-4 col-md-4"></div>
+      <div class="col-lg-4 col-md-4"><button class="w-100 btn btn-lg btn-primary student-detail-container__submit-primary" type="submit" (click)="userProfileSubmit(userLanguage, UserProfileInfoType.Languages)">SUBMIT</button></div>
+      <div class="col-lg-4 col-md-4"></div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #documents>
+  <div class="row">
+    <label style="text-align: left;">Please upload your resume.</label>
+  </div>
+</ng-template>
+
+<ng-template #agreements>
+  <span>agreements</span>
+</ng-template>

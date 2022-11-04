@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::table('user_type')->insert(['name' => 'Admin']);
-        DB::table('user_type')->insert(['name' => 'Student']);
         DB::table('user_type')->insert(['name' => 'Company']);
+        DB::table('user_type')->insert(['name' => 'Student']);
 
         DB::table('user')->insert([
             'email' => 'admin@worker.ca',
@@ -44,6 +44,5 @@ class DatabaseSeeder extends Seeder
         DB::table('skillset')->insert(['name' => 'Ruby']);
         DB::table('skillset')->insert(['name' => 'Java']);
         DB::table('skillset')->insert(['name' => 'Python']);
-
     }
 }

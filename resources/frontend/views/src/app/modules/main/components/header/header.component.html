@@ -1,0 +1,15 @@
+<div class="header">
+  <div class="header__leftnav">
+    <span class="header__brand">Worker Resource</span>
+    <ng-container *ngFor="let item of mainNavItems">
+      <div class="header__navs">
+        <div class="header__nav-item" [class.active]="item.active" (click)="navigateTo(item)"><span>{{ item.name }}</span></div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="header__rightnav">
+    <div class="header__rightnav-avatar">
+      <span>WR</span>
+    </div>
+  </div>
+</div>
