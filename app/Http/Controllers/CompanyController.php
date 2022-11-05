@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Skillset;
+use App\Models\Company;
 use Illuminate\Http\Request;
 
-class SkillsetController extends Controller
+class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class SkillsetController extends Controller
     {
         return response()->json([
             'status' => true,
-            'skillset' => Skillset::all()
+            'company' => Company::all()
         ]);
     }
 
@@ -27,7 +27,7 @@ class SkillsetController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -38,36 +38,36 @@ class SkillsetController extends Controller
      */
     public function store(Request $request)
     {
-        $skillset = Skillset::create($request->all());
+        $company = Company::create($request->all());
 
         return response()->json([
             'status' => true,
-            'message' => "Skillset Created successfully!",
-            'skill' => $skillset
+            'message' => "Company Created successfully!",
+            'company' => $company
         ], 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Skillset  $skillset
+     * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function show(Skillset $skillset)
+    public function show(Company $company)
     {
         return response()->json([
             'status' => true,
-            'skill' => $skillset
+            'company' => $company
         ], 200);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Skillset  $skillset
+     * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function edit(Skillset $skillset)
+    public function edit(Company $company)
     {
         //
     }
@@ -76,33 +76,33 @@ class SkillsetController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Skillset  $skillset
+     * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Skillset $skillset)
+    public function update(Request $request, Company $company)
     {
-        $skillset->update($request->all());
+        $company->update($request->all());
 
         return response()->json([
             'status' => true,
-            'message' => "Skillset Updated successfully!",
-            'skillset' => $skillset
+            'message' => "Company Updated successfully!",
+            'company' => $company
         ], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Skillset  $skillset
+     * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Skillset $skillset)
+    public function destroy(Company $company)
     {
-        $skillset->delete();
+        $company->delete();
 
         return response()->json([
             'status' => true,
-            'message' => "Skillset Deleted successfully!",
+            'message' => "Company Deleted successfully!",
         ], 200);
     }
 }
