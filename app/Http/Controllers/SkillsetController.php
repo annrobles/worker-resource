@@ -43,7 +43,7 @@ class SkillsetController extends Controller
         return response()->json([
             'status' => true,
             'message' => "Skillset Created successfully!",
-            'post' => $skillset
+            'skill' => $skillset
         ], 200);
     }
 
@@ -55,7 +55,10 @@ class SkillsetController extends Controller
      */
     public function show(Skillset $skillset)
     {
-        //
+        return response()->json([
+            'status' => true,
+            'skill' => $skillset
+        ], 200);
     }
 
     /**
@@ -83,7 +86,7 @@ class SkillsetController extends Controller
         return response()->json([
             'status' => true,
             'message' => "Skillset Updated successfully!",
-            'post' => $skillset
+            'skillset' => $skillset
         ], 200);
     }
 
