@@ -16,6 +16,7 @@ import { UserAccessType } from "../../../models/user-access-type.enum";
 export class CompanyListComponent implements OnInit, OnDestroy {
 
   @Input() companyHeader: string = "List of Companies you referred";
+  @Input() showAddApplicantButton: boolean = false;
 
   userAccessType = UserAccessType;
   userType: number =  UserAccessType.None;
@@ -68,7 +69,7 @@ export class CompanyListComponent implements OnInit, OnDestroy {
     private router: Router
   ) {
 
-    this.userType = UserAccessType.Admin;
+    this.userType = parseInt(localStorage.getItem("userType") || "");
 
     if (this.userType == UserAccessType.Admin) {
       this.companyHeader = "List of Companies";

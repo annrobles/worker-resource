@@ -13,11 +13,7 @@ export class SignupService extends MainService {
         this.endpoint = 'api/signup';
     }
 
-  signup(signupBody: any) {
-    console.log("signupBody ", signupBody);
-    return this.post(`${this.endpoint}`, signupBody).pipe();
+  signup(payload: any) {
+    return this.post(`${this.endpoint}`, payload).pipe();
   }
 }
-
-
-

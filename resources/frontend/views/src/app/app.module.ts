@@ -19,7 +19,11 @@ import { StudentViewComponent } from "./modules/student/components/student-view/
 import { UserProfileComponent } from "./modules/user-profile/user-profile.component";
 import { UserVerificationComponent } from "./modules/main/components/user-verification/user-verification.component";
 
+import { AuthService } from './services/auth.service';
+import { HeaderService } from './services/header.service';
+import { SigninService } from './services/signin.service';
 import { SignupService } from './services/signup.service';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -51,6 +55,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UserVerificationComponent
   ],
   providers: [
+    AuthService,
+    HeaderService,
+    SigninService,
     SignupService
   ],
   bootstrap: [AppComponent]
