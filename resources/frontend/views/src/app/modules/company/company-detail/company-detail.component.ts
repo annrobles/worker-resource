@@ -50,7 +50,7 @@ export class CompanyDetailComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.userType = UserAccessType.Admin;
+    this.userType = parseInt(localStorage.getItem("userType") || "");
   }
 
   ngOnDestroy(){

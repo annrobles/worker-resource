@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 
 import { UserAccessType } from "../../../../models/user-access-type.enum";
 
+import { AuthService } from '../../../../services/auth.service';
+import { HeaderService } from '../../../../services/header.service';
+
 @UntilDestroy()
 @Component({
   selector: 'header',
@@ -14,19 +17,33 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   userAccessType = UserAccessType;
   userType: number =  UserAccessType.None;
-
-  mainNavItems = [
-    {name: "Home", link: "/dashboard/user-profile/basic-info", active: true},
-    {name: "Company", link: "/company", active: false},
-    {name: "Candidates", link: "/student-list", active: false}
-  ];
+  mainNavItems: {name: string, link: string, active: boolean}[] = [];
+  headerVisible: boolean = false;
 
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    private authService: AuthService,
+    private headerService: HeaderService
+  ) {
+    this.headerService.headerVisibilityChange.subscribe(value => {
+      this.headerVisible = value;
+    });
+
+    this.authService.userTypeChange.subscribe(value => {
+      this.userType = value;
+    });
+
+    this.authService.mainNavItemsChange.subscribe(value => {
+      this.mainNavItems = value;
+    });
+   }
 
   ngOnInit(): void {
-    this.userType = UserAccessType.Admin;
+    this.headerVisible = localStorage.getItem("headerVisible") == "true" ? true : false;
+    this.userType = parseInt(localStorage.getItem("userType") || "");
+
+    let mainNavItems = localStorage.getItem("mainNavItems");
+    this.mainNavItems =  mainNavItems ? JSON.parse(mainNavItems) : [];
   }
 
   ngOnDestroy(){

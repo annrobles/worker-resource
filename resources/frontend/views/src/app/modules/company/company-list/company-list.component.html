@@ -16,7 +16,7 @@
         <th scope="col" class="text-center">Contact Number</th>
         <th scope="col" class="text-center">Date Added</th>
         <th scope="col" class="text-center">Status</th>
-        <th scope="col" class="text-center" *ngIf="userType == userAccessType.Admin"></th>
+        <th scope="col" class="text-center" *ngIf="userType == userAccessType.Admin && showAddApplicantButton"></th>
       </tr>
     </thead>
     <tbody>
@@ -27,7 +27,7 @@
         <td class="text-center">{{ company.contact_number }}</td>
         <td class="text-center">{{ company.created_at | date:'longDate' }}</td>
         <td class="text-center">{{ CompanyStatus[company.status] }}</td>
-        <th scope="col" class="text-center" *ngIf="userType == userAccessType.Admin">
+        <th scope="col" class="text-center" *ngIf="userType == userAccessType.Admin && showAddApplicantButton">
           <div class="form-floating">
             <button class="w-30 btn btn-sm btn-primary student-detail-container_delete" type="submit">
               <span>Add to company list of applicants</span>

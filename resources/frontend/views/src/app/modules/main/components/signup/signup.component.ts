@@ -1,7 +1,8 @@
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SignupService } from '../../../../services/signup.service'
 import { Router } from '@angular/router';
+
+import { SignupService } from '../../../../services/signup.service'
 @UntilDestroy()
 @Component({
   selector: 'signup',
@@ -36,8 +37,9 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   signupClick() {
-    this.signupService.signup({email: this.email, password: this.password}).subscribe();
-    // this.router.navigateByUrl('/dashboard/user-profile/basic-info');
-    this.router.navigateByUrl('/dashboard/user-profile/basic-info');
+    this.signupService.signup({email: this.email, password: this.password}).subscribe((result) => {
+      console.log("result ", result);
+      this.router.navigateByUrl('/dashboard/user-profile/basic-info');
+    });
   }
 }

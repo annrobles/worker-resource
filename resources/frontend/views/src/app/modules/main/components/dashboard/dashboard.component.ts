@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   userType: number =  UserAccessType.None;
 
   mainNavItems = [
-    {name: "Home", link: "/dashboard/user-profile/basic-info", active: true},
+    {name: "Home111", link: "/dashboard/user-profile/basic-info", active: true},
     {name: "Company", link: "/company", active: false}
   ];
 
@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.userType = UserAccessType.Admin;
+    this.userType = parseInt(localStorage.getItem("userType") || "");
   }
 
   ngOnDestroy(){
