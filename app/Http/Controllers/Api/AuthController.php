@@ -39,7 +39,7 @@ class AuthController extends Controller
             $user =  User::create([
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'user_type_id' => $request->user_type
+                'user_type_id' => $request->user_type_id
             ]);
 
             return response()->json([
