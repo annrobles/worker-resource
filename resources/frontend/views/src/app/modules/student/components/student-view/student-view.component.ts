@@ -2,8 +2,7 @@ import { UntilDestroy } from '@ngneat/until-destroy';
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Student } from '../../../../models/student.model';
-
+import { UserAccessType } from "../../../../models/user-access-type.enum";
 @UntilDestroy()
 @Component({
   selector: 'student-view',
@@ -12,9 +11,22 @@ import { Student } from '../../../../models/student.model';
 })
 export class StudentViewComponent implements OnInit, OnDestroy {
 
+  userAccessType = UserAccessType;
+  userType: number =  UserAccessType.None;
+
+  showAddCompanyButton: boolean = false;
+  showAddApplicantButton: boolean = false;
+
   constructor(
     private router: Router
-  ) { }
+  ) {
+    this.userType = parseInt(localStorage.getItem("userType") || "");
+
+    if (this.userType == UserAccessType.Admin) {
+      this.showAddCompanyButton = false;
+      this.showAddApplicantButton = true;
+    }
+   }
 
   ngOnInit(): void {
   }

@@ -1,24 +1,66 @@
-<div class="company-container">
-  <h3 class="company-container__header mb-5">List of Applicants</h3>
-
-  <table class="table table-striped table-bordered table-sm">
-    <thead>
-      <tr>
-        <th scope="col" class="text-center">#</th>
-        <th scope="col" class="text-center">Name</th>
-        <th scope="col" class="text-center">Email</th>
-        <th scope="col" class="text-center">Contact Number</th>
-        <th scope="col" class="text-center" *ngIf="showRank">Rank</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let student of students; let i = index" (click)="viewStudent(student)">
-        <th class="text-center" scope="row">{{ i+1 }}</th>
-        <td class="text-center">{{ student.first_name }} {{ student.last_name }}</td>
-        <td class="text-center">{{ student.email }}</td>
-        <td class="text-center">{{ student.contact_number }}</td>
-        <td class="text-center" *ngIf="showRank">{{ student.rank }}</td>
-      </tr>
-    </tbody>
-  </table>
+<div [class]="containerClass">
+  <div class="card">
+    <p-table #dt2 [value]="students" dataKey="id"
+        [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['name','email','contact_number']">
+        <ng-template pTemplate="caption">
+            <div class="flex">
+                <span>List of candidates</span>
+                <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt2.filterGlobal(getSearchInputValue($event), 'contains')" placeholder="Search keyword" class="p-inputtext p-component p-element"/>
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th></th>
+            <th scope="col" pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+            <th scope="col" pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+            <th scope="col" *ngIf="showRank" pSortableColumn="contact_number">Contact Number <p-sortIcon field="contact_number"></p-sortIcon></th>
+            <th scope="col" *ngIf="!showRank" colspan="2" pSortableColumn="contact_number">Contact Number <p-sortIcon field="contact_number"></p-sortIcon></th>
+            <th scope="col" pSortableColumn="rank" *ngIf="showRank">Rank <p-sortIcon field="rank"></p-sortIcon></th>
+          </tr>
+            <tr>
+                <th></th>
+                <th>
+                    <p-columnFilter type="text" field="name"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="email"></p-columnFilter>
+                </th>
+                <th colspan="2">
+                  <p-columnFilter type="text" field="contact_number"></p-columnFilter>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-student>
+            <tr (click)="viewStudent(student)">
+              <td>
+                <div style="width: 30px; height: 30px; border-radius: 50%;">
+                  <img src="assets/avatar-icon.jpeg" alt="" style="width: 30px; height: 30px; border-radius: 50%;">
+                </div>
+              </td>
+              <td>
+                {{ student.name }}
+              </td>
+              <td>
+                <span class="image-text">{{ student.email }}</span>
+              </td>
+              <td>
+                <span class="image-text">{{ student.contact_number }}</span>
+              </td>
+              <td>
+                <span class="image-text" *ngIf="showRank">{{ student.rank }}</span>
+              </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="5">No applicants found.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+  </div>
 </div>

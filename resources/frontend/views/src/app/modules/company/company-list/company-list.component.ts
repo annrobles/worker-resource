@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 
 import { Company } from '../../../models/company.model';
 import { CompanyStatus } from '../../../models/company-status.enum';
-
 import { UserAccessType } from "../../../models/user-access-type.enum";
 
 @UntilDestroy()
@@ -15,8 +14,9 @@ import { UserAccessType } from "../../../models/user-access-type.enum";
 })
 export class CompanyListComponent implements OnInit, OnDestroy {
 
-  @Input() companyHeader: string = "List of Companies you referred";
+  @Input() companyHeader: string = "List of Companies";
   @Input() showAddApplicantButton: boolean = false;
+  @Input() showAddCompanyButton: boolean = true;
 
   userAccessType = UserAccessType;
   userType: number =  UserAccessType.None;
@@ -53,7 +53,7 @@ export class CompanyListComponent implements OnInit, OnDestroy {
       name: "Tim Hortons",
       email: "careers@timhortons.com",
       contact_number: "613-453-0158",
-      status: CompanyStatus.Inprogress,
+      status: CompanyStatus.Proposal,
       created_at: new Date("11-01-2022"),
       availability: {
         morning: false,
@@ -65,16 +65,28 @@ export class CompanyListComponent implements OnInit, OnDestroy {
 
   CompanyStatus = CompanyStatus;
 
+  statuses: any[];
+  loading: boolean = false;
+
   constructor(
     private router: Router
   ) {
 
     this.userType = parseInt(localStorage.getItem("userType") || "");
 
-    if (this.userType == UserAccessType.Admin) {
-      this.companyHeader = "List of Companies";
-    }
+    this.statuses = [
+        {label: 'Unqualified', value: 5},
+        {label: 'Qualified', value: 6},
+        {label: 'New', value: 1},
+        {label: 'Negotiation', value: 7},
+        {label: 'Proposal', value: 8},
+        {label: 'Contacted', value: 2}
+    ]
 
+  }
+
+  clear(table: any) {
+    table.clear();
   }
 
   ngOnInit(): void {
@@ -89,5 +101,9 @@ export class CompanyListComponent implements OnInit, OnDestroy {
 
   viewCompany(company: Company) {
     this.router.navigateByUrl('/company/edit');
+  }
+
+  getSearchInputValue(event: any){
+    return (event.target as HTMLInputElement).value;
   }
 }

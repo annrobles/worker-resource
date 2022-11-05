@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
-import { UserAccessType } from './models/user-access-type.enum';
-import { AuthService } from "./services/auth.service";
+import { Component, OnInit } from '@angular/core';
+import { PrimeNGConfig } from 'primeng/api';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   constructor(
-    private authService: AuthService
+    private primengConfig: PrimeNGConfig
   ) { }
+
+  ngOnInit() {
+    this.primengConfig.ripple = true;
+  }
 
   title = 'Worker Resource';
 }

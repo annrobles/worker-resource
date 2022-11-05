@@ -2,6 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
+import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { TableModule } from 'primeng/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,15 +32,19 @@ import { HeaderService } from './services/header.service';
 import { SigninService } from './services/signin.service';
 import { SignupService } from './services/signup.service';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AvatarModule,
+    AvatarGroupModule,
+    ButtonModule,
+    DropdownModule,
+    MultiSelectModule,
+    TableModule
   ],
   exports: [
     StudentDetailComponent,

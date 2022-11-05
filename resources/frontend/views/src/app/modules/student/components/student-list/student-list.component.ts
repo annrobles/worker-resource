@@ -13,6 +13,7 @@ import { Student } from '../../../../models/student.model';
 export class StudentListComponent implements OnInit, OnDestroy {
 
   @Input() showRank: boolean = false;
+  @Input() containerClass: string = "company-container";
 
   students:Student[] = [
     {
@@ -56,13 +57,16 @@ export class StudentListComponent implements OnInit, OnDestroy {
     }
   ]
 
-
+  loading: boolean = false;
 
   constructor(
     private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.students.map((student) => {
+      student.name = student.first_name.concat(" " + student.last_name);
+    })
   }
 
   ngOnDestroy(){
@@ -70,5 +74,9 @@ export class StudentListComponent implements OnInit, OnDestroy {
 
   viewStudent(student: Student) {
     this.router.navigateByUrl('/student-view');
+  }
+
+  getSearchInputValue(event: any){
+    return (event.target as HTMLInputElement).value;
   }
 }
