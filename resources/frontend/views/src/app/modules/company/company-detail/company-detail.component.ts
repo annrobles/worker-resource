@@ -36,21 +36,31 @@ export class CompanyDetailComponent implements OnInit, OnDestroy {
   showStatusDropDown: boolean = false;
   userType: number =  UserAccessType.None;
   userAccessType = UserAccessType;
+  statuses: any[] = [];
 
   constructor(
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    let statuses = Object.keys(CompanyStatus);
+    // let statuses = Object.keys(CompanyStatus);
 
-    statuses.forEach((item) => {
-      if (isNaN(Number(item))) {
-        this.companyStatuses.push(item.replace(/([A-Z])/g, ' $1').trim());
-      }
-    });
+    // statuses.forEach((item) => {
+    //   if (isNaN(Number(item))) {
+    //     this.companyStatuses.push(item.replace(/([A-Z])/g, ' $1').trim());
+    //   }
+    // });
 
     this.userType = parseInt(localStorage.getItem("userType") || "");
+
+    this.statuses = [
+      {label: 'Unqualified', value: 5},
+      {label: 'Qualified', value: 6},
+      {label: 'New', value: 1},
+      {label: 'Negotiation', value: 7},
+      {label: 'Proposal', value: 8},
+      {label: 'Contacted', value: 2}
+  ]
   }
 
   ngOnDestroy(){

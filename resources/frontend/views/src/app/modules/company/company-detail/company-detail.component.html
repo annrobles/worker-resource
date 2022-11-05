@@ -75,15 +75,10 @@
 
     <div class="col-lg-6 col-md-6" style="text-align: left;" *ngIf="userType == userAccessType.Admin">
       <label>Status</label>
+
+
       <div class="form-floating">
-          <button class="company-statuses" (click)="showStatusDropDown=true">{{ companyStatuses[company.status] }}</button>
-          <ng-container *ngIf="showStatusDropDown">
-            <div class="student-detail-skills_dropdown">
-              <ng-container *ngFor="let status of companyStatuses; let i = index">
-                <a *ngIf="i > company.status" (click)="statusChanged(i)">{{ status }}</a>
-              </ng-container>
-            </div>
-          </ng-container>
+        <p-dropdown [options]="statuses" [(ngModel)]="company.status" optionLabel="label" optionValue="value"></p-dropdown>
       </div>
     </div>
   </div>
@@ -91,7 +86,7 @@
   <div class="row" style="text-align: left;">
     <div class="form-group">
       <label for="exampleFormControlTextarea1">About</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" [(ngModel)]='company.about'></textarea>
+      <p-editor [(ngModel)]='company.about' [style]="{'height':'320px'}"></p-editor>
     </div>
   </div>
 
@@ -103,5 +98,5 @@
 </div>
 
 <div class="row mb-3" *ngIf="userType == userAccessType.Admin">
-  <student-list [showRank]="true" [containerClass]="''"></student-list>
+  <student-list [showRank]="true" [containerClass]="''" [reorderableColumns]="true"></student-list>
 </div>

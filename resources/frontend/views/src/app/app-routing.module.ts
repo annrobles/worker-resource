@@ -20,6 +20,11 @@ const routes: Routes = [
     component: SigninComponent
   },
   {
+    path: 'signin',
+    data: { frameless: true },
+    component: SigninComponent
+  },
+  {
     path: 'company',
     data: { frameless: true },
     component: CompanyListComponent

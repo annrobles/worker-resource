@@ -15,12 +15,6 @@ export class SigninService extends MainService {
     }
 
   signin(payload: any) {
-    return of({
-      "status": true,
-      "message": "User Logged In Successfully",
-      "token": "4|LIcORFnu5OTcjw4Tt2ojDm7c5cZGgYWtankDEegp",
-      "user_type": 1
-    }  )
-    //return this.post(`${this.endpoint}`, payload).pipe();
+    return this.post(`${this.endpoint}`, payload).pipe();
   }
 }

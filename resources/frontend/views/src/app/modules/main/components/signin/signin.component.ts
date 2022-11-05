@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { SigninService } from '../../../../services/signin.service';
 import { HeaderService } from '../../../../services/header.service';
 import { AuthService } from "../../../../services/auth.service";
+import { UserAccessType } from 'src/app/models/user-access-type.enum';
 
 @UntilDestroy()
 @Component({
@@ -37,11 +38,16 @@ export class SigninComponent implements OnInit, OnDestroy {
 
   signinClick() {
     this.signinService.signin({email: this.email, password: this.password}).subscribe((result) => {
-      this.authService.setUserType(result.user_type);
+      this.authService.setUserType(result.user.user_type_id);
       this.headerService.toggleHeaderVisibility(true);
       localStorage.setItem("headerVisible", "true");
-      localStorage.setItem("userType", `${result.user_type}`);
-      this.router.navigateByUrl('/dashboard/user-profile/basic-info');
+      localStorage.setItem("userType", `${result.user.user_type_id}`);
+      if (result.user.user_type_id == UserAccessType.Student) {
+        this.router.navigateByUrl('/dashboard/user-profile/basic-info');
+      }
+      else if (result.user.user_type_id == UserAccessType.Admin) {
+        this.router.navigateByUrl('/student-list');
+      }
     });
   }
 

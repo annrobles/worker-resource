@@ -13,7 +13,8 @@ import { Student } from '../../../../models/student.model';
 export class StudentListComponent implements OnInit, OnDestroy {
 
   @Input() showRank: boolean = false;
-  @Input() containerClass: string = "company-container";
+  @Input() containerClass: string = "container";
+  @Input() reorderableColumns: boolean = false;
 
   students:Student[] = [
     {

@@ -8,7 +8,9 @@ import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
+import { EditorModule } from 'primeng/editor';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { ProgressBarModule } from 'primeng/progressbar';
 import { TableModule } from 'primeng/table';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -43,7 +45,9 @@ import { SignupService } from './services/signup.service';
     AvatarGroupModule,
     ButtonModule,
     DropdownModule,
+    EditorModule,
     MultiSelectModule,
+    ProgressBarModule,
     TableModule
   ],
   exports: [

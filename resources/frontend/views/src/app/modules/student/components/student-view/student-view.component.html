@@ -1,3 +1,73 @@
-<h3 class="mt-4">Applicant's Info</h3>
+<div class="student-view-container">
+  <div>
+    <div class="student-view-avatar-container">
+      <img src="assets/avatar-icon.jpeg" alt="">
+    </div>
 
-<company-list [companyHeader]="'Possible companies the applicant skills match'" [showAddApplicantButton]="showAddApplicantButton" [showAddCompanyButton]="showAddCompanyButton"></company-list>
+    <div class="mt-4 student-view-info">
+      <div class="student-view-name">
+        Complete Name
+      </div>
+      <div class="student-view-location">
+        City, Country
+      </div>
+
+      <div class="student-view-title mt-3 mb-3">
+        Full Stack MERN Developer
+      </div>
+
+      <div class="student-view-contact">
+        <span><i class="pi pi-phone" style="font-size: 1rem"></i>: 123 456789</span>
+        <span><i class="pi pi-envelope" style="font-size: 1rem"></i>: test@gmail.com</span>
+        <span><i class="pi pi-linkedin" style="font-size: 1rem"></i>: <a href="https://www.linkedin.com/feed/">https://www.linkedin.com/feed/</a></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="student-view-container student-view-addition-info mt-0 mb-0">
+  <div class="col-lg-4 col-md-4 col-sm-12">
+    <h5>About</h5>
+    <p>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    </p>
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-12">
+    <h5>Skills & Techologies</h5>
+    <div>
+      <div>
+        <span>Javascript (6 yrs)</span>
+        <p-progressBar [value]="80" [showValue]="false"></p-progressBar>
+      </div>
+    </div>
+    <div>
+      <div>
+        <span>Swift (4 yrs)</span>
+        <p-progressBar [value]="90" [showValue]="false"></p-progressBar>
+      </div>
+    </div>
+    <div>
+      <div>
+        <span>Java (8 yrs)</span>
+        <p-progressBar [value]="95" [showValue]="false"></p-progressBar>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-12 student-view-recording">
+    <h5>Video Recording</h5>
+    <ul>
+      <li>
+        <span>Introduction</span>
+        <a href="https://www.linkedin.com/feed/">https://www.linkedin.com/feed/</a>
+      </li>
+      <li>
+        <span>Why should we hire you?</span>
+        <a href="https://www.linkedin.com/feed/">https://www.linkedin.com/feed/</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="mb-5">
+  <company-list [companyHeader]="'Possible companies the applicant skills match'" [showAddApplicantButton]="showAddApplicantButton" [showAddCompanyButton]="showAddCompanyButton"></company-list>
+</div>

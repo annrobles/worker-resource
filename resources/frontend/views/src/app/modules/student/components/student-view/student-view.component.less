@@ -1,0 +1,65 @@
+.student-view-container {
+  display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: stretch;
+	align-content: stretch;
+  margin: 3% 20%;
+  margin-top: 20px;
+}
+
+.student-view-avatar-container {
+  display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: stretch;
+	align-content: stretch;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+
+  img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+  }
+}
+
+.student-view-name {
+  font-weight: bold;
+}
+
+.student-view-contact span {
+  display: block;
+}
+
+.student-view-addition-info {
+
+  div {
+    text-align: left;
+    padding: 0 0.5rem;
+  }
+}
+
+.student-view-recording {
+  ul > li {
+    span {
+      display: block;
+      font-weight: 500;
+    }
+  }
+}
+
+:host p-progressbar {
+  /deep/ .p-progressbar {
+    border-radius: 0;
+    height: 15px;
+    .p-progressbar-value {
+      display: flex;
+      width: 80%;
+      background-color: #1A607E;
+    }
+  }
+}

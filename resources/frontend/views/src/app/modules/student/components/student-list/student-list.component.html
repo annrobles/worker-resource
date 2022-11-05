@@ -3,7 +3,8 @@
     <p-table #dt2 [value]="students" dataKey="id"
         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [globalFilterFields]="['name','email','contact_number']">
+        [globalFilterFields]="['name','email','contact_number']"
+        [reorderableColumns]="reorderableColumns">
         <ng-template pTemplate="caption">
             <div class="flex">
                 <span>List of candidates</span>
@@ -30,14 +31,15 @@
                 <th>
                     <p-columnFilter type="text" field="email"></p-columnFilter>
                 </th>
-                <th colspan="2">
-                  <p-columnFilter type="text" field="contact_number"></p-columnFilter>
-                </th>
+                <th *ngIf="!showRank" colspan="2"><p-columnFilter type="text" field="contact_number"></p-columnFilter></th>
+                <th *ngIf="showRank"><p-columnFilter type="text" field="contact_number"></p-columnFilter></th>
+                <th *ngIf="showRank"></th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-student>
-            <tr (click)="viewStudent(student)">
+        <ng-template pTemplate="body" let-student let-index="rowIndex">
+            <tr (click)="viewStudent(student)" [pReorderableRow]="index">
               <td>
+                <span class="pi pi-bars" [pReorderableRowHandle]="index" *ngIf="reorderableColumns"></span>
                 <div style="width: 30px; height: 30px; border-radius: 50%;">
                   <img src="assets/avatar-icon.jpeg" alt="" style="width: 30px; height: 30px; border-radius: 50%;">
                 </div>
