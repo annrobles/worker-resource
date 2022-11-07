@@ -4,3 +4,10 @@ export enum UserAccessType {
   Company,
   Student
 }
+
+
+export enum Roles {
+  ADMIN = 'ADMIN',
+  COMPANY = 'COMPANY',
+  STUDENT = 'STUDENT'
+}

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
 
-import { UserAccessType } from "../models/user-access-type.enum";
+import { UserAccessType, Roles } from "../models/user-access-type.enum";
 
 import { MainService } from "./main.service";
 
@@ -57,6 +57,43 @@ export class AuthService extends MainService {
   getUserType() {
     return this.user_type;
   }
+
+
+  getUserRole(): string {
+    let userType = localStorage.getItem('userType')
+
+    if (userType != null) {
+    return UserAccessType[parseInt(userType)];
+    }
+
+    return "";
+  }
+
+
+  areUserRolesAllowed(userRoles: string[], allowedUserRoles: Roles[]): boolean {
+    if (allowedUserRoles.length == 0) {
+      return true;
+    }
+    for (const role of userRoles) {
+      for (const allowedRole of allowedUserRoles) {
+        if (role.toLowerCase() === allowedRole.toLowerCase()) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  isLoggedIn() {
+    let token = localStorage.getItem('token')
+
+    if (token != null) {
+      return true;
+    }
+
+    return false;
+  }
+
 }
 
 

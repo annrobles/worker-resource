@@ -9,6 +9,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { EditorModule } from 'primeng/editor';
+import { MenubarModule } from 'primeng/menubar';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { TableModule } from 'primeng/table';
@@ -34,6 +35,7 @@ import { HeaderService } from './services/header.service';
 import { SigninService } from './services/signin.service';
 import { SignupService } from './services/signup.service';
 
+import { AuthGuard } from "./core/auth.guard";
 @NgModule({
   imports: [
     BrowserModule,
@@ -46,6 +48,7 @@ import { SignupService } from './services/signup.service';
     ButtonModule,
     DropdownModule,
     EditorModule,
+    MenubarModule,
     MultiSelectModule,
     ProgressBarModule,
     TableModule
@@ -71,6 +74,7 @@ import { SignupService } from './services/signup.service';
     UserVerificationComponent
   ],
   providers: [
+    AuthGuard,
     AuthService,
     HeaderService,
     SigninService,

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AuthGuard } from "./core/auth.guard";
+
 import { CompanyAddComponent } from "./modules/company/company-add/company-add.component";
 import { CompanyEditComponent } from "./modules/company/company-edit/company-edit.component";
 import { CompanyListComponent } from "./modules/company/company-list/company-list.component";
@@ -12,6 +14,7 @@ import { StudentListComponent } from "./modules/student/components/student-list/
 import { StudentViewComponent } from "./modules/student/components/student-view/student-view.component";
 import { UserProfileComponent } from "./modules/user-profile/user-profile.component";
 import { UserVerificationComponent } from "./modules/main/components/user-verification/user-verification.component";
+import { Roles } from './models/user-access-type.enum';
 
 const routes: Routes = [
   {
@@ -26,23 +29,27 @@ const routes: Routes = [
   },
   {
     path: 'company',
-    data: { frameless: true },
-    component: CompanyListComponent
+    data: { frameless: true, userRoles: [] },
+    component: CompanyListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'company/add',
-    data: { frameless: true },
-    component: CompanyAddComponent
+    data: { frameless: true, userRoles: [] },
+    component: CompanyAddComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'company/edit',
-    data: { frameless: true },
-    component: CompanyEditComponent
+    data: { frameless: true, userRoles: [] },
+    component: CompanyEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'dashboard',
-    data: { frameless: true },
+    data: { frameless: true, userRoles: [] },
     component: DashboardComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'user-profile',
@@ -90,18 +97,21 @@ const routes: Routes = [
   },
   {
     path: 'student-detail',
-    data: { frameless: true },
-    component: StudentDetailComponent
+    data: { frameless: true, userRoles: [Roles.ADMIN, Roles.COMPANY] },
+    component: StudentDetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'student-list',
-    data: { frameless: true },
-    component: StudentListComponent
+    data: { frameless: true, userRoles: [Roles.ADMIN, Roles.COMPANY] },
+    component: StudentListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'student-view',
-    data: { frameless: true },
-    component: StudentViewComponent
+    data: { frameless: true, userRoles: [Roles.ADMIN, Roles.COMPANY] },
+    component: StudentViewComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'user-verification',

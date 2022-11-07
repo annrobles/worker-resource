@@ -7,9 +7,12 @@
       </div>
     </ng-container>
   </div>
-  <div class="header__rightnav">
-    <div class="header__rightnav-avatar">
-      <span>WR</span>
-    </div>
+  <div>
+    <p-menubar [model]="items">
+      <ng-template pTemplate="end">
+      </ng-template>
+    </p-menubar>
   </div>
 </div>
+
+
