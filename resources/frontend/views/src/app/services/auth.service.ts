@@ -18,7 +18,8 @@ export class AuthService extends MainService {
   = new Subject<{name: string, link: string, active: boolean}[]>();
 
   constructor(
-    http: HttpClient) {
+    http: HttpClient
+    ) {
       super(http);
       this.endpoint = 'auth/register';
 

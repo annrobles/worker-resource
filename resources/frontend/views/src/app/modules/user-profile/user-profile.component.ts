@@ -11,6 +11,8 @@ import { UserBasicInformation,
   Skill,
   UserSkill } from "../../models/user-profile-interface";
 
+import { StudentService } from "../../services/student.service";
+
 @UntilDestroy()
 @Component({
   selector: 'user-profile',
@@ -95,7 +97,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   filteredSystemSkills: Skill[] = this.systemSkills;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private studentSvc: StudentService
   ) {
     this.currentRouteUrl = router.url;
    }
@@ -108,6 +111,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
 
   userProfileSubmit(data: UserBasicInformation |   UserLocation | UserExperience | UserEducation | UserLanguage, profileType: UserProfileInfoType) {
+    let userInfo = JSON.parse(localStorage.getItem("user") || "");
+
+    data.user_id = userInfo.id;
+
     switch (profileType) {
       case UserProfileInfoType.Location: {
         break
@@ -131,8 +138,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         break
       }
       default: {
-        // basic information here
-        console.log(data)
+        this.studentSvc.add(data).subscribe((result) => {
+          console.log("result ", result);
+          this.userBasicInformation = result.student;
+        });
         break
       }
     }

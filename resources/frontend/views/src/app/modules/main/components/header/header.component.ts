@@ -72,6 +72,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     localStorage.setItem("mainNavItems", "");
     localStorage.setItem("headerVisible", "");
     localStorage.setItem("token", "");
+    localStorage.setItem("user", "");
     this.router.navigateByUrl('/signin');
   }
 

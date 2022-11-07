@@ -1,4 +1,6 @@
 export interface UserBasicInformation {
+  id?: number,
+  user_id?: number,
   first_name: string,
   last_name: string,
   email: string,
@@ -15,6 +17,8 @@ export interface Availability {
 }
 
 export interface UserLocation {
+  id?: number,
+  user_id?: number,
   address1: string,
   address2: string,
   city: string,
@@ -24,6 +28,8 @@ export interface UserLocation {
 }
 
 export interface UserExperience {
+  id?: number,
+  user_id?: number,
   title: string,
   company_name: string,
   start_date: string,
@@ -33,6 +39,8 @@ export interface UserExperience {
 }
 
 export interface UserEducation {
+  id?: number,
+  user_id?: number,
   name: string,
   degree: string,
   field_study: string,
@@ -43,6 +51,8 @@ export interface UserEducation {
 }
 
 export interface UserLanguage {
+  id?: number,
+  user_id?: number,
   language: Language,
   other_specify: string
 }

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import {throwError as observableThrowError,  Observable ,  BehaviorSubject } from 'rxjs';
-
 export abstract class MainService {
 
   constructor(protected http: HttpClient) { }
 
   private readonly fallbackURL = 'https://404.corebridge.net/';
+  private readonly authorizationHeaderValue = localStorage.getItem("token") || "";
 
   getAPIBase(route: string = ''): string {
     //let serverLink = this.authSvc.url.serverlinks.find(x => ServerType[x.serverType].toLowerCase() == this._urlName.toLowerCase());
@@ -66,7 +66,7 @@ export abstract class MainService {
   get(route: string, observe: 'body'|'response' = 'body'): Observable<any> {
     const url = this.getAPIBase() + route;
     const headers = new HttpHeaders({
-      //'Authorization': this.authSvc.AuthorizationHeaderValue,
+      'Authorization': `Bearer ${this.authorizationHeaderValue}`,
       'Accept': 'application/json'
     });
 
@@ -88,7 +88,7 @@ export abstract class MainService {
   commonStateChangeHeaders(contentType: string | null = 'application/json'): HttpHeaders {
     const headerConfig = {
     'Accept': 'application/json',
-    // 'Authorization': this.authSvc.AuthorizationHeaderValue,
+    'Authorization': `Bearer ${this.authorizationHeaderValue}`,
     // 'ConnectionID': this.connectionID,
     'Content-Type': ''
     };

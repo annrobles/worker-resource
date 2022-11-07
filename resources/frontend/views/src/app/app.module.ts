@@ -34,6 +34,7 @@ import { AuthService } from './services/auth.service';
 import { HeaderService } from './services/header.service';
 import { SigninService } from './services/signin.service';
 import { SignupService } from './services/signup.service';
+import { StudentService } from './services/student.service';
 
 import { AuthGuard } from "./core/auth.guard";
 @NgModule({
@@ -78,7 +79,8 @@ import { AuthGuard } from "./core/auth.guard";
     AuthService,
     HeaderService,
     SigninService,
-    SignupService
+    SignupService,
+    StudentService
   ],
   bootstrap: [AppComponent]
 })
